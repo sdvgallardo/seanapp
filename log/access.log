@@ -1,0 +1,2 @@
+127.0.0.1 - - [11/Aug/2017:15:35:00 -0500] "GET / HTTP/1.1" 200 1797 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
+127.0.0.1 - - [11/Aug/2017:15:35:00 -0500] "GET /favicon.ico HTTP/1.1" 200 295 "http://seanapp/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36"
