@@ -21,3 +21,9 @@ Route::get('/tasks/{task}', 'TasksController@show');
 Route::get('/about', function() {
     return view('about');
   });
+
+Route::get('/blog', 'PostsController@index');
+//Route::get('/blog/{post}' , 'PostsController@show');
+Route::get('/blog/create', 'PostsController@create');
+
+Route::post('/blog', 'PostsController@store');
