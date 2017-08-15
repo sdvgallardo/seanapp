@@ -41,6 +41,7 @@
                         <th>ID</th>
                         <th>Task</th>
                         <th>Date Added</th>
+                        <th>Completed?</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -50,6 +51,7 @@
                         <td> {{$task->id}} </td>
                         <td> <a href="/tasks/{{ $task->id }}"> {{$task->body}} </a> </td>
                         <td>{{$task->created_at}}</td>
+                        <td> {{ $task->completed === 1 ? 'yes' : 'no' }}</td>
                         <td>
                             <button class="btn btn-warning btn-xs btn-detail open-modal" value="{{$task->id}}">Edit</button>
                             <button class="btn btn-danger btn-xs btn-delete delete-task" value="{{$task->id}}">Delete</button>
