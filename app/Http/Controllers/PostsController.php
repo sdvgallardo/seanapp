@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     public function index(){
-      return view('blog.index');
+      $posts = Post::all();
+      return view('blog.index', compact('posts'));
     }
 
     public function show(){

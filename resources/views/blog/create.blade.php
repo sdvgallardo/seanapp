@@ -1,3 +1,5 @@
+@include('layouts.nav')
+
 @extends('layouts.master')
 
 @section ('content')

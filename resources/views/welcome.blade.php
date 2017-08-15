@@ -84,10 +84,8 @@
 
                 <div class="links">
                     <a href="/tasks/">Tasks</a>
-                    <a href="/about/">About</a>
                     <a href="/blog/">Blog</a>
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="/about/">About</a>
                 </div>
             </div>
         </div>

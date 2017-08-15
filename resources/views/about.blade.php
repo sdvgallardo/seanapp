@@ -1,3 +1,4 @@
+@include('layouts.nav')
 <!DOCTYPE html>
   <html>
   <head>

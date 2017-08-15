@@ -1,9 +1,21 @@
+@include('layouts.nav')
+
 @extends ('layouts.master')
 
 @section ('content')
 
     <div class="col-sm-8 blog-main">
 
+
+
+      @foreach ($posts as $post)
+      <div class="blog-post">
+          <h2 class="blog-post-title">{{$post->title}}</h2>
+          <p class="blog-post-meta"> {{ date('d M, Y', strtotime($post->created_at))}} </p>
+          <p>{{str_limit($post->body, 200)}}</p>
+      </div>
+      @endforeach
+<!--
       <div class="blog-post">
         <h2 class="blog-post-title">Sample blog post</h2>
         <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
@@ -35,7 +47,7 @@
           <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
         </ol>
         <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-      </div><!-- /.blog-post -->
+      </div><
 
       <div class="blog-post">
         <h2 class="blog-post-title">Another blog post</h2>
@@ -47,7 +59,7 @@
         </blockquote>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-      </div><!-- /.blog-post -->
+      </div>
 
       <div class="blog-post">
         <h2 class="blog-post-title">New feature</h2>
@@ -61,8 +73,8 @@
         </ul>
         <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
         <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
-      </div><!-- /.blog-post -->
-
+      </div>
+-->
       <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>
         <a class="btn btn-outline-secondary disabled" href="#">Newer</a>

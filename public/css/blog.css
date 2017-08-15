@@ -4,14 +4,11 @@
 
 @media (min-width: 48em) {
   html {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
-body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  color: #555;
-}
+
 
 h1, .h1,
 h2, .h2,
@@ -34,29 +31,6 @@ h6, .h6 {
 }
 
 
-/*
- * Masthead for nav
- */
-
-.blog-masthead {
-  margin-bottom: 3rem;
-  background-color: #428bca;
-  -webkit-box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
-          box-shadow: inset 0 -.1rem .25rem rgba(0,0,0,.1);
-}
-
-/* Nav links */
-.nav-link {
-  position: relative;
-  padding: 1rem;
-  font-weight: 500;
-  color: #cdddeb;
-}
-.nav-link:hover,
-.nav-link:focus {
-  color: #fff;
-  background-color: transparent;
-}
 
 /* Active state gets a caret at the bottom */
 .nav-link.active {
