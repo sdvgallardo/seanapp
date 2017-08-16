@@ -17,6 +17,7 @@ Route::get('/about', function() { return view('about'); });
 
 //Task routes
 Route::resource('/tasks', 'TasksController'); //Using resource controller, does everything all the other routes do in one line
+Route::get('/tasks/destroy', function() { return view('tasks.destroy'); });
 
 // Blog routes
 Route::get('/blog', 'PostsController@index');

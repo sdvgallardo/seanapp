@@ -55,7 +55,7 @@
                   <td> {{ $task->completed === 1 ? 'yes' : 'no' }}</td>
                   <td>
                     <button class="btn btn-warning btn-xs btn-detail open-modal" value="{{$task->id}}">Edit</button>
-                    <button class="btn btn-danger btn-xs btn-delete delete-task" value="{{$task->id}}">Delete</button>
+                    <a href = '/tasks/destroy'><button class="btn btn-danger btn-xs btn-delete delete-task" value="{{$task->id}}">Delete</button></a>
                   </td>
                     </tr>
               @endforeach
