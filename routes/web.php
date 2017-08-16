@@ -11,20 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Basic routes
+Route::get('/', function () { return view('welcome'); });
+Route::get('/about', function() { return view('about'); });
 
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');
+//Task routes
+Route::resource('/tasks', 'TasksController'); //Using resource controller, does everything all the other routes do in one line
 
-Route::get('/about', function() {
-    return view('about');
-  });
-
+// Blog routes
 Route::get('/blog', 'PostsController@index');
 Route::get('/blog/create', 'PostsController@create');
-Route::post('/blog', 'PostsController@store');
 Route::get('/blog/{post}' , 'PostsController@show');
 
+Route::post('/blog', 'PostsController@store');
 Route::post('/blog/{post}/comments', 'CommentsController@store');

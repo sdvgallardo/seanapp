@@ -33,7 +33,7 @@
     @include('layouts.nav')
     <div class="container-narrow">
         <h2>Task List</h2>
-        <button id="btn-add" name="btn-add" class="btn btn-primary btn-xs">Add New Task</button>
+        <a href = '/tasks/create'><button type="create" class="btn btn-primary">Add New Task</button></a>
         <div>
           <!-- Table-to-load-the-data Part -->
           <table class="table">
@@ -66,6 +66,6 @@
 
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-          <script src="{{asset('js/ajax-crud.js')}}"></script>
+          <script src="{{asset('js/tasks.js')}}"></script>
 </body>
 </html>
