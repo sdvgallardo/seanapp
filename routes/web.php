@@ -23,7 +23,6 @@ Route::get('/about', function() {
   });
 
 Route::get('/blog', 'PostsController@index');
-//Route::get('/blog/{post}' , 'PostsController@show');
 Route::get('/blog/create', 'PostsController@create');
-
 Route::post('/blog', 'PostsController@store');
+Route::get('/blog/{post}' , 'PostsController@show');

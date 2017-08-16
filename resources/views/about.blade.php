@@ -5,6 +5,8 @@
     <title>About!</title>
   </head>
   <body>
-    <h1>About me</h1>
+    <h1>
+      @include('layouts.about')
+    </h1>
   </body>
   </html>

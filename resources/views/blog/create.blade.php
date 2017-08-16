@@ -1,6 +1,4 @@
-@include('layouts.nav')
-
-@extends('layouts.master')
+@extends('layouts.blog.master')
 
 @section ('content')
 
@@ -29,9 +27,14 @@
         </label>
       </div>
 -->
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Publish</button>
+      </div>
 
-      <button type="submit" class="btn btn-primary">Publish</button>
+      @include('layouts.errors')
+
     </form>
+
   </div>
 
 @endsection
