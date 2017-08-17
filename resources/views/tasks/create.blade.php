@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta name="_token" content="{{ csrf_token() }}">
+    <title>Tasks!</title>
+
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
+
 @include('layouts.nav')
 
   <div class="col-sm-8 blog-main">
@@ -12,13 +23,6 @@
         <label for="title">Task</label>
         <input type="text" class="form-control" id="body" name="body">
       </div>
-
-<!--
-      <div class="form-group">
-        <label for="body">Mark as Done?</label>
-        <input type="tinyint" class="form-control" id="completed" name="completed">
-      </div>
--->
 
       <div class="checkbox">
         <label for="completed">Completed?</label>

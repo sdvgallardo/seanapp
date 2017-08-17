@@ -12,6 +12,13 @@ class Task extends Model
 
     public function isComplete()
     {
-      return false;
+      return $this->completed;
     }
+
+    public function user(){
+
+      return $this->belongsTo(User::class);
+
+    }
+
 }

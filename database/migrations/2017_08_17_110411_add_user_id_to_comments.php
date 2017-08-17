@@ -14,8 +14,7 @@ class AddUserIdToComments extends Migration
     public function up()
     {
         Schema::table('comments', function (Blueprint $table) {
-            //
-            $table->integer('user_id')->after('id');
+          $table->integer('user_id')->after('id');
         });
     }
 
