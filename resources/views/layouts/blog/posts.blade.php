@@ -3,20 +3,17 @@
 <div class="blog-post">
 
     <h2 class="blog-post-title">
-
-      <a href="/blog/{{ $post->id }}">
-        {{$post->title}}
-      </a>
-
+      {{$post->title}}
     </h2>
 
     <p class="blog-post-meta">
-
-      {{ $post->created_at->toFormattedDateString() }}
-
+      Created by {{ $post->user->name }}
+      on {{ $post->created_at->toFormattedDateString() }}
     </p>
 
-    {{ $post->body }}
+    {{str_limit($post->body, 200)}}
+    <br>
+    <i><a href="/blog/{{ $post->id }}">Read More</a></i>
 
 </div>
 @endforeach

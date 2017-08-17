@@ -21,13 +21,14 @@ class PostsController extends Controller
 
     public function store(){
       $this->validate(request(), [
-        'title' => 'required',
+        'title' => 'required|max:100',
         'body' => 'required'
       ]);
 
       Post::create([
         'title' => request('title'),
-        'body' => request('body')
+        'body' => request('body'),
+        'user_id' => auth()->id()
       ]);
       //Redirect to homepage
       return redirect ('/blog');
