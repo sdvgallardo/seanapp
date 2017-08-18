@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     public function index(){
-      $posts = Post::latest()->get();
+      $posts = Post::latest()
+      ->filter(request(['month', 'year']))
+      ->get();
+
       return view('blog.index', compact('posts'));
     }
 
     public function show(Post $post){
+
       return view('blog.show', compact('post'));
     }
 

@@ -17,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
+        view()->composer('layouts.blog.sidebar', function($view){
+          $view->with('archives', \App\Post::archives());
+        });
     }
 
     /**
