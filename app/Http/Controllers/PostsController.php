@@ -39,6 +39,8 @@ class PostsController extends Controller
         'body' => request('body'),
         'user_id' => auth()->id()
       ]);
+
+      session()->flash('message', 'Your post has now been published');
       //Redirect to homepage
       return redirect ('/blog');
     }
