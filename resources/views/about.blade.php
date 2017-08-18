@@ -13,3 +13,4 @@
       @include('layouts.about')
     </h1>
   </body>
+</html>

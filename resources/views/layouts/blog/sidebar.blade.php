@@ -10,6 +10,7 @@
   <div class="sidebar-module">
     <h4>Archives</h4>
     <ol class="list-unstyled">
+      <li><a href="/blog">All</a></li>
       @foreach ($archives as $stats)
         <li>
           <a href="/blog/?month={{ $stats['month'] }}&year={{ $stats['year'] }}">
@@ -18,7 +19,6 @@
             ({{ $stats['published'] }})
         </li>
       @endforeach
-      <li> <a href="/blog">All</a> </li>
     </ol>
   </div>
   <div class="sidebar-module">
