@@ -1,8 +1,11 @@
 <div class="col-sm-3 offset-sm-1 blog-sidebar">
+
+  @if (Auth::check())
   <div class="sidebar-module">
     <a href = '/blog/create'><button type="create" class="btn btn-primary">Create Post</button></a>
-
   </div>
+  @endif
+
   <div class="sidebar-module sidebar-module-inset">
     <h4>About</h4>
     <p> @include('layouts.about') </p>

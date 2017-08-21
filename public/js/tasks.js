@@ -11,8 +11,8 @@ $(document).ready(function(){
             //success data
             console.log(data);
             $('#task_id').val(data.id);
-            $('#body').val(data.body);
-            $('#done').val(data.done);
+            $('#task').val(data.task);
+            $('#description').val(data.description);
             $('#btn-save').val("update");
 
             $('#myModal').modal('show');
