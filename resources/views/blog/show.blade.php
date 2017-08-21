@@ -16,6 +16,19 @@
 
     {{ $post-> body }}
 
+    <br><br>
+
+    <p class="blog-post-meta">
+      Tags:
+      @if (count($post->tags))
+          @foreach($post->tags as $tag)
+              <a href="/blog/tags/{{ $tag->name }}">
+                {{ $tag->name }}
+              </a>
+          @endforeach
+      @endif
+    </p>
+
     <hr>
     <div class="comments">
       <ul class="list-group">

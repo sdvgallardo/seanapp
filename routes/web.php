@@ -22,6 +22,7 @@ Route::resource('/tasks', 'TasksController'); //Split out
 Route::get('/blog', 'PostsController@index');
 Route::get('/blog/create', 'PostsController@create');
 Route::get('/blog/{post}' , 'PostsController@show');
+Route::get('/blog/tags/{tag}', 'TagsController@index');
 
 Route::post('/blog', 'PostsController@store');
 Route::post('/blog/{post}/comments', 'CommentsController@store');
