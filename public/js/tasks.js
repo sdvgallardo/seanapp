@@ -9,11 +9,11 @@ $(document).ready(function(){
 
         $.get(url + '/' + task_id, function (data) {
             //success data
-            console.log(data);
             $('#task_id').val(data.id);
-            $('#task').val(data.task);
-            $('#description').val(data.description);
+            $('#body').val(data.body);
+            $('#user_id').val(data.user_id);
             $('#btn-save').val("update");
+            console.log(data);
 
             $('#myModal').modal('show');
         })
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         })
 
@@ -52,15 +52,41 @@ $(document).ready(function(){
         });
     });
 
+    //complete task
+    $('#tasks-list').on('click', '.complete-task', function(){
+        var task_id = $(this).val();
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+
+        $.ajax({
+            type: "PUT",
+            url: url + '/' + task_id,
+            success: function (data) {
+                console.log(data);
+                completed: 1;
+                data.save();
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+
+
     //create new task / update existing task
     $("#btn-save").click(function (e) {
 
         e.preventDefault();
 
         var formData = {
-            task: $('#task').val(),
-            description: $('#description').val(),
-            done: 0
+            body: $('#body').val(),
+            user_id: $('user_id').val(),
+
+            completed: 0
         }
 
         //used to determine the http verb to use [add=POST], [update=PUT]
@@ -79,7 +105,7 @@ $(document).ready(function(){
 
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         })
 
@@ -92,8 +118,8 @@ $(document).ready(function(){
             success: function (data) {
                 console.log(data);
 
-                var task = '<tr id="task' + data.id + '"><td>' + data.id + '</td><td>' + data.task + '</td><td>' + data.description + '</td><td>' + data.created_at + '</td>';
-                task += '<td><button class="btn btn-warning btn-xs btn-detail open-modal" value="' + data.id + '">Edit</button>';
+                var task = '<tr id="task' + data.id + '"><td>' + data.id + '</td><td>' + data.body + '</td><td>' + data.created_at + '</td><td>' + data.user + '</td><td>' + data.completed;
+                task += '<td><button class="btn btn-warning btn-xs btn-detail complete-task" value="' + data.id + '">Complete</button>';
                 task += '<button class="btn btn-danger btn-xs btn-delete delete-task" value="' + data.id + '">Delete</button></td></tr>';
 
                 if (state == "add"){ //if user added a new record

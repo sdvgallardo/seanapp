@@ -24,10 +24,10 @@
         <input type="text" class="form-control" id="body" name="body">
       </div>
 
-      <div class="checkbox">
+      <!-- <div class="checkbox">
         <label for="completed">Completed?</label>
         <input type="checkbox" id="completed" name="completed" checked="" value="1">
-      </div>
+      </div> -->
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Add task</button>

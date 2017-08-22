@@ -37,6 +37,17 @@ class TasksController extends Controller
       return view('tasks.show', compact('task'));
     }
 
+    public function complete($id){
+      $task = Task::find($id);
+      if($task->completed){
+        $task->completed = false;
+      } else $task->completed = true;
+
+      $task->save();
+
+      return redirect('/tasks');
+    }
+
     public function edit($id){
     //
     }
@@ -49,6 +60,6 @@ class TasksController extends Controller
       $task = Task::find($id);
       $task->delete();
 
-      return Redirect::to('tasks');
+      return redirect('/tasks');
     }
 }
