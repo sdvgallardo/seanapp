@@ -41,7 +41,14 @@
               @if ( $task->user->id == auth()->id() )
                 <tr id="task{{$task->id}}">
                   <td> {{ $task->id }} </td>
-                  <td> <a href="/tasks/{{ $task->id }}"> {{$task->body}} </a> </td>
+                  <td>
+                    <a href="/tasks/{{ $task->id }}">
+                      <?php
+                        $wrapBody = nl2br( wordwrap($task->body, 20, "\n\r", true), false);
+                        echo "$wrapBody\n";
+                      ?>
+                    </a>
+                  </td>
                   <td>{{$task->created_at}}</td>
                   <td>{{$task->user->name }} </td>
                   <td> {{ $task->completed === 1 ? 'yes' : 'no' }}</td>
