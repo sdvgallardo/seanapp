@@ -21,4 +21,10 @@ class Task extends Model
 
     }
 
+    public function cut($body){
+
+      return wordwrap($body, 25, "\n", true);
+
+    }
+
 }

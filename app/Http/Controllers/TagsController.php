@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
+use App\Post;
 use Illuminate\Http\Request;
 
 class TagsController extends Controller
@@ -11,6 +12,6 @@ class TagsController extends Controller
     public function index(Tag $tag){
       $posts = $tag->posts;
 
-      return view('blog.index', compact('posts'));
+      return view('blog.tag', compact('posts'));
     }
 }

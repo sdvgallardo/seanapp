@@ -16,4 +16,5 @@
     <i><a href="/blog/{{ $post->id }}">Read More</a></i>
 
 </div>
+
 @endforeach

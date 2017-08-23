@@ -13,9 +13,15 @@ class PostsController extends Controller
     }
 
     public function index(Posts $posts){
-      $posts = Post::latest()
-      ->filter(request(['month', 'year']))
-      ->get();
+      // Gather the posts normally, 4 per page
+      $posts = Post::latest()->paginate(4);
+
+      // If there is a specific month request
+      if( request('month')){
+        $posts = Post::latest()
+        ->filter(request(['month', 'year'])) //Gather those archives
+        ->paginate(); //If there's no number, it displays them all on one page
+      }
 
       return view('blog.index', compact('posts'));
     }
