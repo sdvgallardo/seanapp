@@ -44,8 +44,10 @@
                   <td>
                     <a href="/tasks/{{ $task->id }}">
                       <?php
-                        $wrapBody = nl2br( wordwrap($task->body, 20, "\n\r", true), false);
-                        echo "$wrapBody\n";
+                        // $wrapBody = nl2br( wordwrap($task->body, 25, "\n\r", true), false);
+                        // echo "$wrapBody";
+                        $cutBody = mb_strimwidth($task->body, 0, 30, "...");
+                        echo $cutBody;
                       ?>
                     </a>
                   </td>
