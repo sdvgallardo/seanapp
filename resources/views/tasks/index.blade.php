@@ -42,24 +42,24 @@
                 <tr id="task{{$task->id}}">
                   <td> {{ $task->id }} </td>
                   <td>
-                    <a href="/tasks/{{ $task->id }}">
+                    <a href="/tasks/{{ $task->id }}"> {!! wordwrap($task->body, 25, "<br>", true) !!} </a>
+                  </td>
                       <?php
-                        $wrapBody = wordwrap($task->body, 25, "<br>", true);
-                        echo "$wrapBody";
+                        // {!! !!} Brackets like this don't automatically escape everything inside
+
+                        // $wrapBody = wordwrap($task->body, 25, "<br>", true);
+                        // echo "$wrapBody";
                         // $cutBody = mb_strimwidth($task->body, 0, 30, "...");
                         // echo $cutBody;
                       ?>
-                    </a>
-                  </td>
                   <td>{{$task->created_at}}</td>
                   <td>{{$task->user->name }} </td>
-                  <td> {{ $task->completed === 1 ? 'yes' : 'no' }}</td>
+                  <td>{{ $task->completed === 1 ? 'yes' : 'no' }}</td>
                   <td>
                     <!-- <button class="btn btn-warning btn-xs btn-detail open-modal" value="{{$task->id}}">Edit</button> -->
                     @if ( $task->completed ) <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-warning btn-xs btn-detail" value="{{ $task->id }}">Incomplete</button></a>
                     @else                    <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-success btn-xs btn-detail" value="{{ $task->id }}">Complete</button></a>
                     @endif
-
                     <a href="/tasks/delete/{{ $task->id }}"><button class="btn btn-danger btn-xs btn-delete" value="{{ $task->id }}">Delete</button></a>
                   </td>
                 </tr>
