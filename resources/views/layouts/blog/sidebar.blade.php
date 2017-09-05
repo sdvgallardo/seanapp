@@ -17,8 +17,7 @@
       @foreach ($archives as $stats)
         <li>
           <a href="/blog/?month={{ $stats['month'] }}&year={{ $stats['year'] }}">
-            {{ $stats['month'] . ' ' . $stats['year'] . ' ' }}
-          </a>
+            {{ $stats['month'] . ' ' . $stats['year'] }}</a>
             ({{ $stats['published'] }})
         </li>
       @endforeach
@@ -28,10 +27,10 @@
   <div class="sidebar-module">
     <h4>Tags</h4>
     <ol class="list-unstyled">
-      @foreach ($tags as $tag)
+      @foreach (array_combine($tags->toArray(), $tagNumbers) as $tag => $tagNumber)
         <li>
-          <a href="/blog/tags/{{ $tag }}">
-            {{ $tag }}
+          <a href="/blog/tags/{{ $tag }}"> {{ $tag }}</a>
+          ({{ $tagNumber['number'] }})
         </li>
       @endforeach
     </ol>
