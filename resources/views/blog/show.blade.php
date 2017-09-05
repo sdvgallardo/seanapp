@@ -19,13 +19,18 @@
     <br><br>
 
     <p class="blog-post-meta">
-      Tags:
-      @if (count($post->tags))
-          @foreach($post->tags as $tag)
-              <a href="/blog/tags/{{ $tag->name }}">
-                {{ $tag->name }}
-              </a>
-          @endforeach
+      @if($count = count($post->tags))
+      <i>Tags: </i>
+      <?php
+        $i = 0;
+        foreach($post->tags as $tag){
+          echo "<a href=\"/blog/tags/$tag->name\"> $tag->name </a>";
+          if ($i != $count-1){
+            echo "| ";
+          }
+          $i++;
+        }
+      ?>
       @endif
     </p>
 
