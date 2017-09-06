@@ -1,5 +1,23 @@
 @extends('layouts.blog.master')
 
+@section ('links')
+
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.tagsinput.js"></script>
+  <link href="/css/jquery.tagsinput.css" rel="stylesheet">
+  
+@endsection
+
+@section ('javascript')
+
+  <script type="text/javascript">
+    $(function() {
+      $('#tags').tagsInput({width:'auto'});
+    });
+  </script>
+
+@endsection
+
 @section ('content')
 
   <div class="col-sm-8 blog-main">
@@ -20,13 +38,11 @@
         <textarea id="body" name="body" class="form-control"></textarea>
       </div>
 
-<!--
-      <div class="checkbox">
-        <label>
-          <input type="checkbox"> Check me out
-        </label>
+      <div class="form-group">
+      <label for "tags">Tags</label>
+        <input type="text" class="tags" id="tags" name="tags">
       </div>
--->
+
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Publish</button>
       </div>
