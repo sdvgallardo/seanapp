@@ -40,11 +40,19 @@ class PostsController extends Controller
         'body' => 'required'
       ]);
 
-      Post::create([
-        'title' => request('title'),
-        'body' => request('body'),
-        'user_id' => auth()->id()
-      ]);
+      $tags = explode(',' , request('tags'));
+      dd($tags);
+
+      foreach($tags as $tag){
+
+        
+
+      }
+      // Post::create([
+      //   'title' => request('title'),
+      //   'body' => request('body'),
+      //   'user_id' => auth()->id()
+      // ]);
 
       session()->flash('message', 'Your post has now been published');
       //Redirect to homepage

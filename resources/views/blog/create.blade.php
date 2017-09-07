@@ -3,16 +3,18 @@
 @section ('links')
 
   <script type="text/javascript" src="/js/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/jquery.tagsinput.js"></script>
-  <link href="/css/jquery.tagsinput.css" rel="stylesheet">
-  
+  <!-- <script type="text/javascript" src="/js/jquery.tagsinput.js"></script> -->
+  <script type="text/javascript" src="/js/bootstrap-tagsinput.js"></script>
+  <!-- <link href="/css/jquery.tagsinput.css" rel="stylesheet"> -->
+  <link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
+
 @endsection
 
 @section ('javascript')
 
   <script type="text/javascript">
     $(function() {
-      $('#tags').tagsInput({width:'auto'});
+      $('#tags').val();
     });
   </script>
 
@@ -40,7 +42,7 @@
 
       <div class="form-group">
       <label for "tags">Tags</label>
-        <input type="text" class="tags" id="tags" name="tags">
+        <input type="text" class="form-control" id="tags" name="tags" data-role="tagsinput" >
       </div>
 
       <div class="form-group">
