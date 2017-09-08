@@ -45,7 +45,6 @@ class PostsController extends Controller
       $tags = explode(',' , request('tags'));
       //dd($tags);
 
-
       $post = Post::create([
         'title' => request('title'),
         'body' => request('body'),
@@ -55,9 +54,12 @@ class PostsController extends Controller
       foreach($tags as $tag){
         $tag = trim($tag);
         $tag = strtolower($tag);
+      }
+
+      $tags = array_unique($tags);
+
+      foreach($tags as $tag){
         DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);
-
-
       }
 
 

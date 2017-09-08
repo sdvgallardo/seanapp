@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     //
-    public function posts(){
-      return $this->belongsToMany(Post::class)->latest();
+    public function post(){
+      return $this->belongsTo(Post::class);
     }
 
     public static function archives(){
