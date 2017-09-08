@@ -11,11 +11,12 @@ class Tag extends Model
       return $this->belongsToMany(Post::class)->latest();
     }
 
-    public static function tagNumbers(){
+    public static function archives(){
 
-      return static::selectRaw('tag_id, count(*) number')
-        ->from('post_tag')
-        ->groupBy('tag_id')
+      // return null;
+      return static::selectRaw('name name, count(*) number')
+        ->groupBy('name')
+        ->orderByRaw('number desc')
         ->get()
         ->toArray();
     }

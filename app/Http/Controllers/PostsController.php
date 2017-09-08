@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\Tag;
+use DB;
 use App\Repositories\Posts;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -41,18 +43,23 @@ class PostsController extends Controller
       ]);
 
       $tags = explode(',' , request('tags'));
-      dd($tags);
+      //dd($tags);
+
+
+      $post = Post::create([
+        'title' => request('title'),
+        'body' => request('body'),
+        'user_id' => auth()->id()
+      ]);
 
       foreach($tags as $tag){
+        $tag = trim($tag);
+        $tag = strtolower($tag);
+        DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);
 
-        
 
       }
-      // Post::create([
-      //   'title' => request('title'),
-      //   'body' => request('body'),
-      //   'user_id' => auth()->id()
-      // ]);
+
 
       session()->flash('message', 'Your post has now been published');
       //Redirect to homepage

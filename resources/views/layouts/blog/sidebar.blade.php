@@ -27,10 +27,11 @@
   <div class="sidebar-module">
     <h4>Tags</h4>
     <ol class="list-unstyled">
-      @foreach (array_combine($tags->toArray(), $tagNumbers) as $tag => $tagNumber)
+      @foreach ($tags as $tag)
         <li>
-          <a href="/blog/tags/{{ $tag }}"> {{ $tag }}</a>
-          ({{ $tagNumber['number'] }})
+          <a href="/blog/tags/{{ $tag['name'] }}">
+            {{ $tag['name'] }}</a>
+            ({{ $tag['number'] }})
         </li>
       @endforeach
     </ol>
