@@ -97,6 +97,7 @@
                 <div class="links">
                     <a href="/tasks/">Tasks</a>
                     <a href="/blog/">Blog</a>
+                    <a href="/test/">Test</a>
                     <a href="/about/">About</a>
                 </div>
             </div>

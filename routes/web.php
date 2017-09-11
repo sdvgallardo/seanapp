@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 //Basic routes
 Route::get('/', function () { return view('welcome'); });
 Route::get('/about', function() { return view('about'); });
+Route::get('/test', function() { return view('test'); });
 
 //Task routes
 Route::get('/tasks', 'TasksController@index');
