@@ -8,7 +8,7 @@
     </h2>
 
     <p class="blog-post-meta">
-      Created by {{ $post->user->name }}
+      Created by <a href="/blog/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
         on {{ $post->created_at->toFormattedDateString() }}
       @if($count = count($post->tags))
       <br>

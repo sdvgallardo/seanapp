@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Post;
-use App\Tag;
+use App\User;
 use DB;
 use App\Repositories\Posts;
 use Illuminate\Http\Request;
@@ -15,8 +15,10 @@ class PostsController extends Controller
     }
 
     public function archives($month, $year){
+      // Sets an array we're going to use to filter
       $archives = array('month' => $month, 'year' => $year);
 
+      // Filters using the function we have in the Post model, then paginates
       $posts = Post::latest()
         ->filter($archives)
         ->paginate(4);
@@ -24,10 +26,19 @@ class PostsController extends Controller
       return view('blog.index', compact('posts'));
     }
 
-    public function index(Posts $posts){
+    public function showUser($userID){
+      // Looks for posts with a user_id of the one passed in
+      $posts = Post::latest()
+        ->selectRaw('*')
+        ->where('user_id', $userID)
+        ->paginate(4);
+
+      return view('blog.index', compact('posts'));
+    }
+
+    public function index(Post $posts){
       // Gather the posts normally, 4 per page
       $posts = Post::latest()->paginate(4);
-      // dd($posts);
 
       return view('blog.index', compact('posts'));
     }

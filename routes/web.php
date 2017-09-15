@@ -31,6 +31,7 @@ Route::post('/tasks', 'TasksController@store');
   // Get routes
   Route::get('/blog', 'PostsController@index');
   Route::get('/blog/archive/{month}/{year}', 'PostsController@archives');
+  Route::get('/blog/user/{userID}', 'PostsController@showUser');
   Route::get('/blog/create', 'PostsController@create');
   Route::get('/blog/{post}' , 'PostsController@show');
   Route::get('/blog/tag/{tag}', 'TagsController@index');

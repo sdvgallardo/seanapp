@@ -8,12 +8,12 @@
 
         <nav class="blog-pagination">
           @if( $posts->currentPage() != 1 )
-            <a class="btn btn-outline-secondary" href="/blog/"> Home </a>
+            <a class="btn btn-outline-secondary" href="{{ $posts->url(1) }}">First</a>
             <a class="btn btn-outline-primary" href=" {{ $posts->previousPageUrl() }} ">Previous</a>
           @endif
           @if( $posts->hasMorePages() )
             <a class="btn btn-outline-primary" href="{{ $posts->nextPageUrl() }}">Next</a>
-            <a class="btn btn-outline-secondary" href="/blog?page={{ $posts->lastPage() }}">Last</a>
+            <a class="btn btn-outline-secondary" href="{{ $posts->url( $posts->lastPage() ) }}">Last</a>
           @endif
         </nav>
 
