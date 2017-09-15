@@ -1,4 +1,3 @@
-
   <div class="sidebar-module">
     <h4>Archives</h4>
     <ol class="list-unstyled">

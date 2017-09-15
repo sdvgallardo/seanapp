@@ -40,6 +40,13 @@ class PostsController extends Controller
       return view('blog.create');
     }
 
+    public function edit(Post $post){
+      // dd($post);
+      $tags = $post->tags->toArray();
+      return view('blog.editPost', compact('post', 'tags'));
+    }
+
+
     public function store(){
       $this->validate(request(), [
         'title' => 'required|max:100',

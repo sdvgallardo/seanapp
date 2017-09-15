@@ -4,14 +4,17 @@
 
   <div class="col-sm-3 offset-sm-1 blog-sidebar">
       <div class="sidebar-module sidebar-module-inset">
-        <h4>{{ $user->name }}</h4>
-        <p>Number of posts: {{ $posts->total() }}</p>
+        <h4><b>{{ $user->name }}</b></h4>
+        <ol class="list-unstyled">
+          <li> <i>Joined:</i> {{ $user->created_at->toFormattedDateString() }} </li>
+          <li> <i>Posts:</i> {{ $posts->total() }}</li>
+        </ol>
       </div>
   </div>
 
 @endsection
 
-
+<title>{{ $user->name }}'s Blog!</title>
 
 @section ('content')
 
@@ -41,7 +44,7 @@
         </p>
 
         {{str_limit($post->body, 50)}}
-        <i><a href="/blog/{{ $post->id }}">Read More</a></i>
+        <i><a href="/blog/post/{{ $post->id }}">Read More</a></i>
 
       </div>
     @endforeach

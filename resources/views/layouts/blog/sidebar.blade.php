@@ -15,7 +15,7 @@
     <p> @include('layouts.about') </p>
   </div>
 
-  @yield('archives')
+  @include('layouts.blog.archives')
 
   <div class="sidebar-module">
     <h4>Elsewhere</h4>
