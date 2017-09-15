@@ -11,19 +11,23 @@ use Carbon\Carbon;
 class PostsController extends Controller
 {
     public function __construct(){
-      $this->middleware('auth')->except(['index', 'show']);
+      $this->middleware('auth')->except(['index', 'show', 'archives']);
+    }
+
+    public function archives($month, $year){
+      $archives = array('month' => $month, 'year' => $year);
+
+      $posts = Post::latest()
+        ->filter($archives)
+        ->paginate(4);
+
+      return view('blog.index', compact('posts'));
     }
 
     public function index(Posts $posts){
       // Gather the posts normally, 4 per page
       $posts = Post::latest()->paginate(4);
-
-      // If there is a specific month request
-      if( request('month')){
-        $posts = Post::latest()
-        ->filter(request(['month', 'year'])) //Gather those archives
-        ->paginate(); //If there's no number, it displays them all on one page
-      }
+      // dd($posts);
 
       return view('blog.index', compact('posts'));
     }

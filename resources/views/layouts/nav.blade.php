@@ -3,23 +3,20 @@
 
   <div class="collapse navbar-collapse" id="navbarsExample02">
 
-    @if (Auth::guest())
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item"><a class="nav-link" href="/tasks">Tasks</a></li>
         <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="/test">Test</a><li>
         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
       </ul>
+
+      @if (Auth::guest())
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
       </ul>
       @else
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item"><a class="nav-link" href="/tasks">Tasks</a></li>
-        <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-      </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item"><a class="nav-link">{{ Auth::user()->name }}</a></li>
         <li class="nav-item">

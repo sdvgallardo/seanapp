@@ -16,7 +16,7 @@
       <li><a href="/blog">All</a></li>
       @foreach ($archives as $stats)
         <li>
-          <a href="/blog/?month={{ $stats['month'] }}&year={{ $stats['year'] }}">
+          <a href="/blog/archive/{{ $stats['month'] }}/{{ $stats['year'] }}">
             {{ $stats['month'] . ' ' . $stats['year'] }}</a>
             ({{ $stats['published'] }})
         </li>
@@ -29,7 +29,7 @@
     <ol class="list-unstyled">
       @foreach ($tags as $tag)
         <li>
-          <a href="/blog/tags/{{ $tag['name'] }}">
+          <a href="/blog/tag/{{ $tag['name'] }}">
             {{ $tag['name'] }}</a>
             ({{ $tag['number'] }})
         </li>

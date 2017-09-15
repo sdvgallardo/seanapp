@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //Basic routes
 Route::get('/', function () { return view('welcome'); });
 Route::get('/about', function() { return view('about'); });
-Route::get('/test', function() { return view('test'); });
+Route::get('/test', 'TestController@index');
 
 //Task routes
 Route::get('/tasks', 'TasksController@index');
@@ -28,12 +28,15 @@ Route::get('/tasks/{task}', 'TasksController@show');
 Route::post('/tasks', 'TasksController@store');
 
 // Blog routes
-Route::get('/blog', 'PostsController@index');
-Route::get('/blog/create', 'PostsController@create');
-Route::get('/blog/{post}' , 'PostsController@show');
-Route::get('/blog/tags/{tag}', 'TagsController@index');
-Route::post('/blog', 'PostsController@store');
-Route::post('/blog/{post}/comments', 'CommentsController@store');
+  // Get routes
+  Route::get('/blog', 'PostsController@index');
+  Route::get('/blog/archive/{month}/{year}', 'PostsController@archives');
+  Route::get('/blog/create', 'PostsController@create');
+  Route::get('/blog/{post}' , 'PostsController@show');
+  Route::get('/blog/tag/{tag}', 'TagsController@index');
+  //Post routes
+  Route::post('/blog', 'PostsController@store');
+  Route::post('/blog/{post}/comments', 'CommentsController@store');
 
 Auth::routes();
 
