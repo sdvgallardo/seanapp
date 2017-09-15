@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Post;
+use App\Tag;
 use DB;
 use App\Repositories\Posts;
 use Illuminate\Http\Request;
@@ -46,15 +47,15 @@ class PostsController extends Controller
       return view('blog.editPost', compact('post', 'tags'));
     }
 
-
     public function store(){
       $this->validate(request(), [
         'title' => 'required|max:100',
         'body' => 'required'
       ]);
 
-      $tags = explode(',' , request('tags'));
-      //dd($tags);
+      $tags = explode(',' , strtolower(request('tags')));
+      $tags = preg_replace('/\s+/', '', $tags);
+      $tags = array_unique($tags);
 
       $post = Post::create([
         'title' => request('title'),
@@ -62,12 +63,6 @@ class PostsController extends Controller
         'user_id' => auth()->id()
       ]);
 
-      foreach($tags as $tag){
-        $tag = trim($tag);
-        $tag = strtolower($tag);
-      }
-
-      $tags = array_unique($tags);
 
       foreach($tags as $tag){
         DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);
@@ -77,5 +72,31 @@ class PostsController extends Controller
       session()->flash('message', 'Your post has now been published');
       //Redirect to homepage
       return redirect ('/blog');
+    }
+
+    public function update(Post $post){
+      $this->validate(request(), [
+        'title' => 'required|max:100',
+        'body' => 'required'
+      ]);
+
+      Post::where('id', $post->id)
+        ->update([
+          'title' => request('title'),
+          'body' => request('body'),
+        ]);
+
+      Tag::where('post_id', $post->id)
+        ->delete();
+
+      $tags = explode(',' , strtolower(request('tags')));
+      $tags = preg_replace('/\s+/', '', $tags);
+      $tags = array_unique($tags);
+
+      foreach($tags as $tag){
+        DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);
+      }
+
+      return redirect('/blog');
     }
 }

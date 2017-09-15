@@ -27,7 +27,7 @@
 
     <hr>
 
-    <form method="POST" action="/blog" >
+    <form method="POST" action="/blog/edit/post/{{ $post->id }}" >
       {{ csrf_field() }}
 
       <div class="form-group">
@@ -42,15 +42,11 @@
 
       <div class="form-group">
       <label for "tags">Tags</label>
-        <input type="text" class="form-control" id="tags" name="tags" data-role="tagsinput" value="
-          @foreach($tags as $tag)
-            {{ $tag['name'] }},
-          @endforeach
-        " >
+        <input type="text" class="form-control" id="tags" name="tags" data-role="tagsinput" value="@foreach($tags as $tag){{ $tag['name'] }},@endforeach">
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="save" class="btn btn-primary">Save</button>
       </div>
 
       @include('layouts.errors')
