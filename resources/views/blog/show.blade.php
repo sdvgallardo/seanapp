@@ -1,5 +1,14 @@
 @extends('layouts.blog.master')
 
+@section('sidebar')
+
+  @include('layouts.blog.sidebar')
+  @section('archives')
+    @include('layouts.blog.archives')
+  @endsection
+
+@endsection
+
 @section ('content')
 
   <div class="col-sm-8 blog-main">
@@ -10,7 +19,7 @@
     </h1>
 
     <p class="blog-post-meta">
-      Created by {{ $post->user->name }}
+      Created by <a href="/blog/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
       on {{ $post->created_at->toFormattedDateString() }}
     </p>
 
@@ -68,10 +77,5 @@
         @include('layouts.errors')
     </div>
     @endif
-
-
-
-
-
   </div>
 @endsection

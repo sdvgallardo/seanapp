@@ -1,5 +1,11 @@
 @extends ('layouts.blog.master')
 
+@section('sidebar')
+
+  @include('layouts.blog.sidebar')
+
+@endsection
+
 @section ('content')
 
     <div class="col-sm-8 blog-main">

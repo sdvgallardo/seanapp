@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use App\Post;
-use DB;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class TagsController extends Controller
 {

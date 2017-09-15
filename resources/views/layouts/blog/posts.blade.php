@@ -1,4 +1,3 @@
-
 @foreach ($posts as $post)
 
 <div class="blog-post">
@@ -27,9 +26,6 @@
     </p>
 
     {{str_limit($post->body, 200)}}
-
-
-    <br>
     <i><a href="/blog/{{ $post->id }}">Read More</a></i>
 
 </div>

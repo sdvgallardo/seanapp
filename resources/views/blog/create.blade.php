@@ -22,6 +22,8 @@
 
 @section ('content')
 
+  @include('layouts.blog.sidebar')
+
   <div class="col-sm-8 blog-main">
     <h1>Create a post</h1>
 

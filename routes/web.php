@@ -29,15 +29,15 @@ Route::post('/tasks', 'TasksController@store');
 
 // Blog routes
   // Get routes
-  Route::get('/blog', 'PostsController@index');
-  Route::get('/blog/archive/{month}/{year}', 'PostsController@archives');
-  Route::get('/blog/user/{userID}', 'PostsController@showUser');
-  Route::get('/blog/create', 'PostsController@create');
-  Route::get('/blog/{post}' , 'PostsController@show');
-  Route::get('/blog/tag/{tag}', 'TagsController@index');
+  Route::get('/blog', 'PostsController@index');                           // Base blog page
+  Route::get('/blog/archive/{month}/{year}', 'PostsController@archives'); // Page for a specified month
+  Route::get('/blog/tag/{tag}', 'TagsController@index');                  // Page for a specified tag
+  Route::get('/blog/user/{userID}', 'UsersController@index');             // Page for a specified user
+  Route::get('/blog/create', 'PostsController@create');                   // Create page
+  Route::get('/blog/{post}' , 'PostsController@show');                    // Page for a specified post
   //Post routes
-  Route::post('/blog', 'PostsController@store');
-  Route::post('/blog/{post}/comments', 'CommentsController@store');
+  Route::post('/blog', 'PostsController@store');                          // Stores a new post on the database
+  Route::post('/blog/{post}/comments', 'CommentsController@store');       // Stores a new comment
 
 Auth::routes();
 

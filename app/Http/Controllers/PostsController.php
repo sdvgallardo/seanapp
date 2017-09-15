@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Post;
-use App\User;
 use DB;
 use App\Repositories\Posts;
 use Illuminate\Http\Request;
@@ -21,16 +20,6 @@ class PostsController extends Controller
       // Filters using the function we have in the Post model, then paginates
       $posts = Post::latest()
         ->filter($archives)
-        ->paginate(4);
-
-      return view('blog.index', compact('posts'));
-    }
-
-    public function showUser($userID){
-      // Looks for posts with a user_id of the one passed in
-      $posts = Post::latest()
-        ->selectRaw('*')
-        ->where('user_id', $userID)
         ->paginate(4);
 
       return view('blog.index', compact('posts'));
