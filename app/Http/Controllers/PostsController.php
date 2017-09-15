@@ -97,6 +97,6 @@ class PostsController extends Controller
         DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);
       }
 
-      return redirect('/blog');
+      return redirect('/blog/post'. '/' . $post->id);
     }
 }
