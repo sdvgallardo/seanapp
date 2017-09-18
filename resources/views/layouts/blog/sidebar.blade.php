@@ -1,5 +1,7 @@
 <div class="col-sm-3 offset-sm-1 blog-sidebar">
 
+  @yield('button')
+
   @if (Auth::check())
   <div class="sidebar-module">
     <a href = '/blog/create'><button type="create" class="btn btn-primary">Create Post</button></a>

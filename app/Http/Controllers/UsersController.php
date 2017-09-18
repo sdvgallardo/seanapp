@@ -24,4 +24,23 @@ class UsersController extends Controller
 
       return view('blog.user', compact('posts', 'user'));
     }
+
+    public function edit(User $user){
+      return view('blog.editUser', compact('user'));
+    }
+
+    public function update(User $user){
+      $this->validate(request(), [
+        'name' => 'required|max:100',
+      ]);
+
+      User::where('id', $user->id)
+        ->update([
+          'name' => request('name'),
+          'bio' => request('bio'),
+          'location' => request('location')
+        ]);
+
+      return redirect('/blog/user'. '/' . $user->id);
+    }
 }

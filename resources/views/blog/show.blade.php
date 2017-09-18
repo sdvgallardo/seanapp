@@ -2,10 +2,11 @@
 
 @section('sidebar')
 
-  @include('layouts.blog.sidebar')
-  @section('archives')
-    @include('layouts.blog.archives')
+  @section('button')
+
   @endsection
+
+  @include('layouts.blog.sidebar')
 
 @endsection
 
@@ -21,6 +22,9 @@
     <p class="blog-post-meta">
       Created by <a href="/blog/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
       on {{ $post->created_at->toFormattedDateString() }}
+      @if ( Auth::user()->name == $post->user->name )
+        | <a href = '/blog/edit/post/{{ $post->id }}'>Edit this post</a>
+      @endif
     </p>
 
     {{ $post-> body }}
@@ -75,6 +79,7 @@
           </div>
         </form>
         @include('layouts.errors')
+
     </div>
     @endif
   </div>
