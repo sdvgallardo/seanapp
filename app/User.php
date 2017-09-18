@@ -27,7 +27,28 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function postArchive($user){
+
+      return static::selectRaw('year(created_at) year, monthname(created_at) month, user_id user, count(*) published')
+        ->from('posts')
+        ->where('user_id', $user)
+        ->groupBy('year', 'month', 'user')
+        ->orderByRaw('min(created_at) desc')
+        ->get()
+        ->toArray();
+    }
+
+    // public static function tagArchive(){
+    //
+    //   return static::selectRaw('name name, count(*) number')
+    //     ->groupBy('name')
+    //     ->orderByRaw('number desc')
+    //     ->get()
+    //     ->toArray();
+    // }
+
     public function posts(){
       return $this->hasMany(Post::class);
     }
+
 }

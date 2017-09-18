@@ -25,6 +25,36 @@ class UsersController extends Controller
       return view('blog.user', compact('posts', 'user'));
     }
 
+    public function archives($month, $year, $userID){
+      // Sets an array we're going to use to filter
+      $archives = array('month' => $month, 'year' => $year, 'user' => $userID);
+
+      $user = User::selectRaw('*')
+        ->where('id', $userID)
+        ->get();
+      $user = $user->get(0);
+
+      // Filters using the function we have in the Post model, then paginates
+      $posts = Post::latest()
+        ->filter($archives)
+        ->paginate(4);
+
+      return view('blog.user', compact('posts', 'user'));
+    }
+
+    public function tag(Tag $tag, User $user){
+      //Grabs the posts of a certain tag name using a join, then paginates
+      $posts = Post::latest()
+        ->join('tags', 'posts.id', '=', 'tags.post_id')
+        ->select('posts.*')
+        ->where('tags.name', $tag->name)
+        ->where('posts.user_id', $user->id)
+        ->paginate(4);
+
+      return view('blog.user', compact('posts', 'user'));
+
+    }
+
     public function edit(User $user){
       $posts = Post::latest()
         ->selectRaw('*')

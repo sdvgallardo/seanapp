@@ -32,10 +32,11 @@ class Post extends Model
       $query->whereYear('created_at', $year);
     }
 
+    // dd($filters);
     if ($user = $filters['user']){
-      $query->where('user_id', $user->id);
+      // dd($user);
+      $query->whereUser_id($user);
     }
-
   }
 
   public static function archives(){

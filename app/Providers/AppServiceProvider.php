@@ -17,12 +17,16 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
-        view()->composer('layouts.blog.archives', function($view){
+        view()->composer('layouts.blog.sidebar', function($view){
           $archives = \App\Post::archives();
           $tags = \App\Tag::archives();
 
-          // $tags = \App\Tag::has('posts')->orderBy('id', 'asc')->pluck('name');
-          //  $tagNumbers = \App\Tag::tagNumbers();
+          $view->with(compact('archives', 'tags'));
+        });
+
+        view()->composer('layouts.blog.userSidebar', function($view){
+          $archives = \App\User::postArchive($view->user->id);
+          // $tags = \App\User::tagsArchive();
 
           $view->with(compact('archives', 'tags'));
         });

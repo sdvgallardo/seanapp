@@ -16,7 +16,7 @@ class PostsController extends Controller
 
     public function archives($month, $year){
       // Sets an array we're going to use to filter
-      $archives = array('month' => $month, 'year' => $year);
+      $archives = array('month' => $month, 'year' => $year, 'user' => '');
 
       // Filters using the function we have in the Post model, then paginates
       $posts = Post::latest()
@@ -63,13 +63,11 @@ class PostsController extends Controller
         'user_id' => auth()->id()
       ]);
 
-
       foreach($tags as $tag){
         DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);
       }
 
-
-      session()->flash('message', 'Your post has now been published');
+      // session()->flash('message', 'Your post has now been published');
       //Redirect to homepage
       return redirect ('/blog');
     }

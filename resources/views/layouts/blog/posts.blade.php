@@ -7,7 +7,7 @@
     </h2>
 
     <p class="blog-post-meta">
-      Created by <a href="/blog/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
+      Created by <a href="/blog/user={{ $post->user->id }}">{{ $post->user->name }}</a>
         on {{ $post->created_at->toFormattedDateString() }}
       @if($count = count($post->tags))
       <br>
@@ -26,7 +26,7 @@
     </p>
 
     {{str_limit($post->body, 200)}}
-    <i><a href="/blog/post/{{ $post->id }}">Read More</a></i>
+    <i><a href="/blog/post={{ $post->id }}">Read More</a></i>
 
 </div>
 
