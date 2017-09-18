@@ -1,15 +1,13 @@
 <div class="col-sm-3 offset-sm-1 blog-sidebar">
 
-  @yield('button')
-
   @if (Auth::check())
-  <div class="sidebar-module">
-    <a href = '/blog/create'><button type="create" class="btn btn-primary">Create Post</button></a>
-  </div>
+    <div class="sidebar-module">
+      <a href = '/blog/create'><button type="create" class="btn btn-primary">Create Post</button></a>
+    </div>
   @else
-  <div class="sidebar-module">
-    <a href = "{{ route('login') }}"><button type="login" class="btn btn-primary">Sign in to post</button></a>
-  </div>
+    <div class="sidebar-module">
+      <a href = "{{ route('login') }}"><button type="login" class="btn btn-primary">Sign in to post</button></a>
+    </div>
   @endif
 
   <div class="sidebar-module sidebar-module-inset">

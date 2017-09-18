@@ -1,13 +1,15 @@
 @extends('layouts.blog.master')
 
+<title>{{ $user->name }}'s Blog!</title>
+
 @section ('content')
 
-  @include('layouts.blog.sidebar')
+  @include('layouts.blog.userSidebar')
   <div class="col-sm-8 blog-main">
     <h1>Edit User</h1>
     <hr>
-    @if ( Auth::user()->name == $post->user->name )
-      <form method="POST" action="/blog/edit/post/{{ $post->id }}" >
+    @if ( Auth::user()->id == $user->id )
+      <form method="POST" action="/blog/edit/user/{{ $user->id }}" >
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -33,7 +35,7 @@
       </form>
 
     @else
-      You cannot edit this post
+      You cannot edit this user
     @endif
 
   </div>

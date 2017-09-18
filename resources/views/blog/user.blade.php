@@ -1,23 +1,10 @@
 @extends ('layouts.blog.master')
 
-@section('sidebar')
-
-  <div class="col-sm-3 offset-sm-1 blog-sidebar">
-      <div class="sidebar-module sidebar-module-inset">
-        <h4><b>{{ $user->name }}</b></h4>
-        <ol class="list-unstyled">
-          <li> <i>Joined:</i> {{ $user->created_at->toFormattedDateString() }} </li>
-          <li> <i>Posts:</i> {{ $posts->total() }}</li>
-        </ol>
-      </div>
-  </div>
-
-@endsection
-
 <title>{{ $user->name }}'s Blog!</title>
 
 @section ('content')
 
+  @include('layouts.blog.userSidebar')
   <div class="col-sm-8 blog-main">
     @foreach ($posts as $post)
       <div class="blog-post">

@@ -33,11 +33,13 @@ Route::post('/tasks', 'TasksController@store');
   Route::get('/blog/archive/{month}/{year}', 'PostsController@archives'); // Page for a specified month
   Route::get('/blog/tag/{tag}', 'TagsController@index');                  // Page for a specified tag
   Route::get('/blog/edit/post/{post}', 'PostsController@edit');
+  Route::get('/blog/edit/user/{user}', 'UsersController@edit');
   Route::get('/blog/user/{userID}', 'UsersController@index');             // Page for a specified user
   Route::get('/blog/create', 'PostsController@create');                   // Create page
   Route::get('/blog/post/{post}' , 'PostsController@show');               // Page for a specified post
   //Post routes
   Route::post('/blog/edit/post/{post}', 'PostsController@update');
+  Route::post('/blog/edit/user/{user}', 'UsersController@update');
   Route::post('/blog', 'PostsController@store');                          // Stores a new post on the database
   Route::post('/blog/{post}/comments', 'CommentsController@store');       // Stores a new comment
 

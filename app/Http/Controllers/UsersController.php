@@ -26,7 +26,12 @@ class UsersController extends Controller
     }
 
     public function edit(User $user){
-      return view('blog.editUser', compact('user'));
+      $posts = Post::latest()
+        ->selectRaw('*')
+        ->where('user_id', $user->id)
+        ->paginate(4);
+
+      return view('blog.editUser', compact('posts', 'user'));
     }
 
     public function update(User $user){

@@ -24,7 +24,7 @@
   <div class="col-sm-8 blog-main">
     <h1>Edit this post</h1>
     <hr>
-    @if ( Auth::user()->name == $post->user->name )
+    @if ( Auth::user()->id == $post->user->id )
       <form method="POST" action="/blog/edit/post/{{ $post->id }}" >
         {{ csrf_field() }}
 
@@ -53,7 +53,7 @@
     @else
       You cannot edit this post
     @endif
-    
+
   </div>
 
 @endsection

@@ -1,17 +1,8 @@
 @extends('layouts.blog.master')
 
-@section('sidebar')
-
-  @section('button')
-
-  @endsection
-
-  @include('layouts.blog.sidebar')
-
-@endsection
-
 @section ('content')
 
+  @include('layouts.blog.sidebar')
   <div class="col-sm-8 blog-main">
 
     <i><a href="/blog">Back to Main</a></i>
@@ -22,7 +13,7 @@
     <p class="blog-post-meta">
       Created by <a href="/blog/user/{{ $post->user->id }}">{{ $post->user->name }}</a>
       on {{ $post->created_at->toFormattedDateString() }}
-      @if ( Auth::user()->name == $post->user->name )
+      @if ( Auth::user()->id == $post->user->id )
         | <a href = '/blog/edit/post/{{ $post->id }}'>Edit this post</a>
       @endif
     </p>

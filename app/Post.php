@@ -3,7 +3,6 @@
 namespace App;
 use Carbon\Carbon;
 
-
 class Post extends Model
 {
 
@@ -32,6 +31,11 @@ class Post extends Model
     if ($year = $filters['year']){
       $query->whereYear('created_at', $year);
     }
+
+    if ($user = $filters['user']){
+      $query->where('user_id', $user->id);
+    }
+
   }
 
   public static function archives(){
