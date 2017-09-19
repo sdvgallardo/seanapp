@@ -31,4 +31,17 @@
     </ol>
   </div>
 
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ol class="list-unstyled">
+      @foreach ($tags as $tag)
+        <li>
+          <a href="/blog/tag={{ $tag['name'] }}/user={{ $tag['user'] }}">
+            {{ $tag['name'] }}</a>
+            ({{ $tag['number'] }})
+        </li>
+      @endforeach
+    </ol>
+  </div>
+
 </div>

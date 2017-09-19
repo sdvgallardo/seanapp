@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.blog.userSidebar', function($view){
           $archives = \App\User::postArchive($view->user->id);
-          // $tags = \App\User::tagsArchive();
+          $tags = \App\User::tagArchive($view->user->id);
 
           $view->with(compact('archives', 'tags'));
         });
