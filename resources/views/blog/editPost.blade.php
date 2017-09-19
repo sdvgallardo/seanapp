@@ -25,7 +25,7 @@
     <h1>Edit this post</h1>
     <hr>
     @if ( Auth::user()->id == $post->user->id )
-      <form method="POST" action="/blog/edit/post/{{ $post->id }}" >
+      <form method="POST" action="/blog/edit/post={{ $post->id }}" >
         {{ csrf_field() }}
 
         <div class="form-group">

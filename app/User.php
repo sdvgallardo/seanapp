@@ -32,7 +32,7 @@ class User extends Authenticatable
       return static::selectRaw('year(created_at) year, monthname(created_at) month, user_id user, count(*) published')
         ->from('posts')
         ->where('user_id', $userID)
-        ->groupBy('year', 'month', 'user')
+        ->groupBy('year', 'month')
         ->orderByRaw('min(created_at) desc')
         ->get()
         ->toArray();

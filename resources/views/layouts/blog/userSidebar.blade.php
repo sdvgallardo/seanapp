@@ -1,8 +1,10 @@
 <div class="col-sm-3 offset-sm-1 blog-sidebar">
 
   <div class="sidebar-module">
-    @if ( Auth::user()->id == $user->id )
-      <a href = '/blog/edit/user={{ $user->id }}'><button type="edit" class="btn btn-primary">Edit Profile</button></a>
+    @if ( Auth::check() )
+      @if ( Auth::user()->id == $user->id )
+        <a href = '/blog/edit/user={{ $user->id }}'><button type="edit" class="btn btn-primary">Edit Profile</button></a>
+      @endif      
     @endif
   </div>
 

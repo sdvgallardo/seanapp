@@ -13,8 +13,10 @@
     <p class="blog-post-meta">
       Created by <a href="/blog/user={{ $post->user->id }}">{{ $post->user->name }}</a>
       on {{ $post->created_at->toFormattedDateString() }}
-      @if ( Auth::user()->id == $post->user->id )
-        | <a href = '/blog/edit/post={{ $post->id }}'>Edit this post</a>
+      @if ( Auth::check() )
+        @if ( Auth::user()->id == $post->user->id )
+          | <a href = '/blog/edit/post={{ $post->id }}'>Edit this post</a>
+        @endif
       @endif
     </p>
 
@@ -29,7 +31,7 @@
       <?php
         $i = 0;
         foreach($post->tags as $tag){
-          echo "<a href=\"/blog/tags=$tag->name\"> $tag->name </a>";
+          echo "<a href=\"/blog/tag=$tag->name\"> $tag->name </a>";
           if ($i != $count-1){
             echo "| ";
           }
