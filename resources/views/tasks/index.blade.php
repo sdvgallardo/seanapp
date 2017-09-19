@@ -60,6 +60,7 @@
                     @if ( $task->completed ) <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-warning btn-xs btn-detail" value="{{ $task->id }}">Incomplete</button></a>
                     @else                    <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-success btn-xs btn-detail" value="{{ $task->id }}">Complete</button></a>
                     @endif
+                    <a href="/tasks/edit/{{ $task->id }}"><button class="btn btn-primary btn-xs btn-primary" value="{{ $task->id }}">Edit</button></a>
                     <a href="/tasks/delete/{{ $task->id }}"><button class="btn btn-danger btn-xs btn-delete" value="{{ $task->id }}">Delete</button></a>
                   </td>
                 </tr>

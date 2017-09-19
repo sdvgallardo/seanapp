@@ -42,7 +42,6 @@ class PostsController extends Controller
     }
 
     public function edit(Post $post){
-      // dd($post);
       $tags = $post->tags->toArray();
       return view('blog.editPost', compact('post', 'tags'));
     }

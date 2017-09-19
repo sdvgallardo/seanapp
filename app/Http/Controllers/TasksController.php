@@ -48,12 +48,21 @@ class TasksController extends Controller
       return redirect('/tasks');
     }
 
-    public function edit($id){
-    //
+    public function edit(Task $task){
+      return view('tasks.edit', compact('task'));
     }
 
-    public function update(Request $request, $id){
-    //
+    public function update(Task $task){
+      $this->validate(request(), [
+        'body' => 'required',
+      ]);
+
+      Task::where('id', $task->id)
+        ->update([
+          'body' => request('body'),
+        ]);
+      //Redirect to homepage
+      return redirect ('/tasks');
     }
 
     public function destroy($id){

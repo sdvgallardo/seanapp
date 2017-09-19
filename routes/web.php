@@ -24,8 +24,12 @@ Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/create', 'TasksController@create');
 Route::get('/tasks/delete/{task}', 'TasksController@destroy');
 Route::get('/tasks/complete/{task}', 'TasksController@complete');
+Route::get('/tasks/edit/{task}', 'TasksController@edit');
 Route::get('/tasks/{task}', 'TasksController@show');
+
 Route::post('/tasks', 'TasksController@store');
+Route::post('/tasks/edit/{task}', 'TasksController@update');
+
 
 // Blog routes
   // Get routes

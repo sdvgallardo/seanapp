@@ -10,11 +10,7 @@ use Illuminate\Http\Request;
 class UsersController extends Controller
 {
     public function index($userID){
-      $user = User::selectRaw('*')
-        ->where('id', $userID)
-        ->get();
-
-      $user = $user->get(0);
+      $user = User::find($userID);
 
       // Looks for posts with a user_id of the one passed in
       $posts = Post::latest()
@@ -29,10 +25,7 @@ class UsersController extends Controller
       // Sets an array we're going to use to filter
       $archives = array('month' => $month, 'year' => $year, 'user' => $userID);
 
-      $user = User::selectRaw('*')
-        ->where('id', $userID)
-        ->get();
-      $user = $user->get(0);
+      $user = User::find($userID);
 
       // Filters using the function we have in the Post model, then paginates
       $posts = Post::latest()
