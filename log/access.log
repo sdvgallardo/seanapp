@@ -8140,3 +8140,4 @@
 127.0.0.1 - - [19/Sep/2017:10:56:30 -0500] "GET /blog/post=9 HTTP/1.1" 200 3366 "http://seanapp/blog/edit/post=9" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
 127.0.0.1 - - [19/Sep/2017:10:56:30 -0500] "GET /favicon.ico HTTP/1.1" 200 295 "http://seanapp/blog/post=9" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
 127.0.0.1 - - [19/Sep/2017:10:56:31 -0500] "GET /blog/tag=php HTTP/1.1" 200 2850 "http://seanapp/blog/post=9" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+127.0.0.1 - - [19/Sep/2017:11:18:40 -0500] "GET /blog HTTP/1.1" 200 2951 "http://seanapp/blog/tag=php" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
