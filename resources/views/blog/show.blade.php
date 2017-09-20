@@ -12,10 +12,15 @@
 
     <p class="blog-post-meta">
       Created by <a href="/blog/user={{ $post->user->id }}">{{ $post->user->name }}</a>
-      on {{ $post->created_at->toFormattedDateString() }}
+      on {{ $post->created_at->format('j M, g:i A') }}
+      @if ( $post->updated_at != $post->created_at)
+        | edited on {{ $post->updated_at->format('j M, g:i A') }} <br>
+      @else
+        |
+      @endif
       @if ( Auth::check() )
         @if ( Auth::user()->id == $post->user->id )
-          | <a href = '/blog/edit/post={{ $post->id }}'>Edit this post</a>
+          <a href = '/blog/edit/post={{ $post->id }}'>Edit this post</a>
         @endif
       @endif
     </p>

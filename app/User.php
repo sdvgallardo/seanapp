@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'username'
     ];
 
     /**
@@ -27,9 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public static function postArchive($userID){
-
-      return static::selectRaw('year(created_at) year, monthname(created_at) month, user_id user, count(*) published')
+    public static function postArchive($userID)
+    {
+        return static::selectRaw('year(created_at) year, monthname(created_at) month, user_id user, count(*) published')
         ->from('posts')
         ->where('user_id', $userID)
         ->groupBy('year', 'month')
@@ -38,9 +38,9 @@ class User extends Authenticatable
         ->toArray();
     }
 
-    public static function tagArchive($userID){
-
-      return static::selectRaw('tags.name name, tags.post_id, posts.id, posts.user_id, users.id user, count(*) number')
+    public static function tagArchive($userID)
+    {
+        return static::selectRaw('tags.name name, tags.post_id, posts.id, posts.user_id, users.id user, count(*) number')
         ->from('tags')
         ->join('posts', 'tags.post_id', '=', 'posts.id')
         ->join('users', 'posts.user_id', '=', 'users.id')
@@ -51,8 +51,8 @@ class User extends Authenticatable
         ->toArray();
     }
 
-    public function posts(){
-      return $this->hasMany(Post::class);
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
-
 }

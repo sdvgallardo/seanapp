@@ -8,8 +8,11 @@
 
     <p class="blog-post-meta">
       Created by <a href="/blog/user={{ $post->user->id }}">{{ $post->user->name }}</a>
-        on {{ $post->created_at->toFormattedDateString() }}
-      @if($count = count($post->tags))
+        on {{ $post->created_at->format('j M Y, g:i A') }}
+        @if ( $post->updated_at != $post->created_at)
+          | edited on {{ $post->updated_at->format('j M, g:i A') }}
+        @endif
+      @if( $count = count($post->tags) )
       <br>
       <i>Tags: </i>
       <?php

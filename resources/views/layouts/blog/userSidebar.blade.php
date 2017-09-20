@@ -4,8 +4,9 @@
     @if ( Auth::check() )
       @if ( Auth::user()->id == $user->id )
         <a href = '/blog/edit/user={{ $user->id }}'><button type="edit" class="btn btn-primary">Edit Profile</button></a>
-      @endif      
+      @endif
     @endif
+    <br>
   </div>
 
   <div class="sidebar-module sidebar-module-inset">
@@ -44,6 +45,8 @@
         </li>
       @endforeach
     </ol>
+    <a href = "/blog"> << Back to main blog </a>
+
   </div>
 
 </div>

@@ -20,6 +20,10 @@
         <div class="sidebar-module">
           <a href = '/tasks/create'><button id="btn-add" name="btn-add" class="btn btn-primary btn-xs">Add New Task</button></a>
         </div>
+      @else
+        <div class="sidebar-module">
+          <a href = "{{ route('login') }}"><button type="login" class="btn btn-primary btn-xs">Sign in to create tasks</button></a>
+        </div>
       @endif
 
       <div>
@@ -30,7 +34,7 @@
               <th>ID</th>
               <th>Task</th>
               <th>Date Created</th>
-              <th>Added by</th>
+              <th>Date Updated</th>
               <th>Completed?</th>
               <th>Actions</th>
             </tr>
@@ -44,23 +48,17 @@
                   <td>
                     <a href="/tasks/{{ $task->id }}"> {!! wordwrap($task->body, 25, "<br>", true) !!} </a>
                   </td>
-                      <?php
-                        // {!! !!} Brackets like this don't automatically escape everything inside
-
-                        // $wrapBody = wordwrap($task->body, 25, "<br>", true);
-                        // echo "$wrapBody";
-                        // $cutBody = mb_strimwidth($task->body, 0, 30, "...");
-                        // echo $cutBody;
-                      ?>
-                  <td>{{$task->created_at}}</td>
-                  <td>{{$task->user->name }} </td>
+                  <td>{{ $task->created_at->format('j M, g:i A') }}</td>
+                  <td>{{ $task->updated_at->format('j M, g:i A') }} </td>
                   <td>{{ $task->completed === 1 ? 'yes' : 'no' }}</td>
                   <td>
                     <!-- <button class="btn btn-warning btn-xs btn-detail open-modal" value="{{$task->id}}">Edit</button> -->
-                    @if ( $task->completed ) <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-warning btn-xs btn-detail" value="{{ $task->id }}">Incomplete</button></a>
-                    @else                    <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-success btn-xs btn-detail" value="{{ $task->id }}">Complete</button></a>
+                    @if ( $task->completed )
+                      <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-warning btn-xs btn-detail" value="{{ $task->id }}">Incomplete</button></a>
+                    @else
+                      <a href="/tasks/complete/{{ $task->id }}"><button class="btn btn-success btn-xs btn-detail" value="{{ $task->id }}">Complete</button></a>
                     @endif
-                    <a href="/tasks/edit/{{ $task->id }}"><button class="btn btn-primary btn-xs btn-primary" value="{{ $task->id }}">Edit</button></a>
+                    <a href="/tasks/edit/{{ $task->id }}"><button class="btn btn-primary btn-xs btn-detail" value="{{ $task->id }}">Edit</button></a>
                     <a href="/tasks/delete/{{ $task->id }}"><button class="btn btn-danger btn-xs btn-delete" value="{{ $task->id }}">Delete</button></a>
                   </td>
                 </tr>

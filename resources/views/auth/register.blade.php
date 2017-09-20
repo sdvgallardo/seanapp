@@ -18,11 +18,6 @@
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
 
-                                <!-- @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif -->
                             </div>
                         </div>
 
@@ -31,12 +26,14 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                            </div>
+                        </div>
 
-                                <!-- @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif -->
+                        <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+                            <label for="username" class="col-md-4 control-label">Choose a username</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="username" class="form-control" name="username" value="{{ old('username') }}">
                             </div>
                         </div>
 
@@ -45,12 +42,6 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password">
-
-                                <!-- @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif -->
                             </div>
                         </div>
 
