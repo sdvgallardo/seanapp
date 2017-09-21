@@ -2,6 +2,7 @@
 
 @section ('links')
 
+  <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap-tagsinput.js"></script>
   <link href="/css/bootstrap-tagsinput.css" rel="stylesheet">
@@ -35,7 +36,10 @@
 
         <div class="form-group">
           <label for="body">Body</label>
-          <textarea id="body" name="body" class="form-control" style="height: 200px">{{ $post->body }}</textarea>
+          <textarea id="body" name="body" class="form-control" rows="10" cols="80">{{ $post->body }}</textarea>
+          <script>
+              CKEDITOR.replace( 'body' );
+          </script>
         </div>
 
         <div class="form-group">

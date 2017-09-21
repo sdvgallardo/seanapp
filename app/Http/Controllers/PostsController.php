@@ -58,7 +58,7 @@ class PostsController extends Controller
         $this->validate(request(), [
         'title' => 'required|max:100',
         'body' => 'required'
-      ]);
+        ]);
 
         $tags = explode(',', strtolower(request('tags')));
         $tags = preg_replace('/\s+/', '', $tags);
@@ -68,7 +68,7 @@ class PostsController extends Controller
         'title' => request('title'),
         'body' => request('body'),
         'user_id' => auth()->id()
-      ]);
+        ]);
 
         foreach ($tags as $tag) {
             DB::insert('insert into tags (name, post_id) values (? , ?)', [$tag, $post->id]);

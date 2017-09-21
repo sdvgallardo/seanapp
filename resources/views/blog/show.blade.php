@@ -25,9 +25,7 @@
       @endif
     </p>
 
-    {{ $post-> body }}
-
-    <br>
+    <?php echo $post->body ?>
     <br>
 
     <p class="blog-post-meta">

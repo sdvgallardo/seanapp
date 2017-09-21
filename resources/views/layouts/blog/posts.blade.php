@@ -28,7 +28,10 @@
       @endif
     </p>
 
-    {{str_limit($post->body, 200)}}
+    <?php
+      echo str_limit($post->body, 200);
+     ?>
+    <!-- {{str_limit($post->body, 200)}} -->
     <i><a href="/blog/post={{ $post->id }}">Read More</a></i>
 
 </div>
