@@ -30,25 +30,25 @@ class User extends Authenticatable
     public static function postArchive($userID)
     {
         return static::selectRaw('year(created_at) year, monthname(created_at) month, user_id user, count(*) published')
-        ->from('posts')
-        ->where('user_id', $userID)
-        ->groupBy('year', 'month')
-        ->orderByRaw('min(created_at) desc')
-        ->get()
-        ->toArray();
+          ->from('posts')
+          ->where('user_id', $userID)
+          ->groupBy('year', 'month')
+          ->orderByRaw('min(created_at) desc')
+          ->get()
+          ->toArray();
     }
 
     public static function tagArchive($userID)
     {
         return static::selectRaw('tags.name name, tags.post_id, posts.id, posts.user_id, users.id user, count(*) number')
-        ->from('tags')
-        ->join('posts', 'tags.post_id', '=', 'posts.id')
-        ->join('users', 'posts.user_id', '=', 'users.id')
-        ->where('user_id', $userID)
-        ->groupBy('name')
-        ->orderByRaw('number desc')
-        ->get()
-        ->toArray();
+          ->from('tags')
+          ->join('posts', 'tags.post_id', '=', 'posts.id')
+          ->join('users', 'posts.user_id', '=', 'users.id')
+          ->where('user_id', $userID)
+          ->groupBy('name')
+          ->orderByRaw('number desc')
+          ->get()
+          ->toArray();
     }
 
     public function posts()

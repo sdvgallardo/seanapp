@@ -64,17 +64,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-      $user = User::create([
+        $user = User::create([
         'name' => $data['name'],
         'email' => $data['email'],
         'username' => $data['username'],
         'password' => bcrypt($data['password'])
       ]);
 
-      \Mail::to($data['email'])->send(new Welcome($user));
+        \Mail::to($data['email'])->send(new Welcome($user));
 
-      session()->flash('message', 'Thanks for signing up');
+        session()->flash('message', 'Thanks for signing up');
 
-      return $user;
+        return $user;
     }
 }

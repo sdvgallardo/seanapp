@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class TagsController extends Controller
 {
-    public function index(Tag $tag){
+    public function index(Tag $tag)
+    {
 
       //Grabs the posts of a certain tag name using a join, then paginates
       $posts = Post::latest()
@@ -17,6 +18,6 @@ class TagsController extends Controller
         ->where('tags.name', $tag->name)
         ->paginate(4);
 
-      return view('blog.index', compact('posts'));
+        return view('blog.index', compact('posts'));
     }
 }

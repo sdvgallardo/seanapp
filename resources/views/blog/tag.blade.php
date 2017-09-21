@@ -2,10 +2,10 @@
 
 @section ('content')
 
-    <div class="col-sm-8 blog-main">
+  <div class="col-sm-8 blog-main">
 
     @include ('layouts.blog.posts')
 
-    </div><!-- /.blog-main -->
+  </div><!-- /.blog-main -->
 
 @endsection

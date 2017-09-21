@@ -21,10 +21,12 @@
             <i>Tags: </i>
             <?php
               $i = 0;
-              foreach($post->tags as $tag){
-                echo "$tag->name ";
-                if ($i != $count-1) echo "| ";
-                $i++;
+              foreach ($post->tags as $tag) {
+                  echo "$tag->name ";
+                  if ($i != $count-1) {
+                      echo "| ";
+                  }
+                  $i++;
               }
             ?>
           @endif

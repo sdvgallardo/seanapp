@@ -35,12 +35,12 @@
       <i>Tags: </i>
       <?php
         $i = 0;
-        foreach($post->tags as $tag){
-          echo "<a href=\"/blog/tag=$tag->name\"> $tag->name </a>";
-          if ($i != $count-1){
-            echo "| ";
-          }
-          $i++;
+        foreach ($post->tags as $tag) {
+            echo "<a href=\"/blog/tag=$tag->name\"> $tag->name </a>";
+            if ($i != $count-1) {
+                echo "| ";
+            }
+            $i++;
         }
       ?>
       @endif
