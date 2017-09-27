@@ -66,16 +66,19 @@ class UsersController extends Controller
         $this->validate(request(), [
           'name' => 'required|max:100',
         ]);
-
-        $ext = request()->file('avatar')->Extension();
-        request()->file('avatar')->storeAs('/public/avatars', $user->username . '.'. $ext);
+        if(request()->file('avatar')){
+          $ext = request()->file('avatar')->Extension();
+          request()->file('avatar')->storeAs('/public/avatars', $user->username . '.'. $ext);
+          $path = '/storage/avatars' . '/' . $user->username . '.' . $ext;
+        }
+        else $path = $user->avatar;
 
         User::where('id', $user->id)
           ->update([
             'name' => request('name'),
             'bio' => request('bio'),
             'location' => request('location'),
-            'avatar' => '/storage/avatars'. '/'. $user->username . '.' . $ext
+            'avatar' => $path
           ]);
 
         return redirect('/blog/user'. '=' . $user->id);

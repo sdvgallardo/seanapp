@@ -1,5 +1,11 @@
 @extends('layouts.blog.master')
 
+@section ('links')
+
+  <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+
+@endsection
+
 <title>{{ $user->name }}'s Blog!</title>
 
 @section ('content')
@@ -18,8 +24,11 @@
         </div>
 
         <div class="form-group">
-          <label for="body">Bio</label>
-          <textarea id="bio" name="bio" class="form-control" style="height: 200px">{{ $user->bio }}</textarea>
+          <label for="bio">Bio</label>
+          <textarea id="bio" name="bio" class="form-control" rows="10" cols="80">{{ $user->bio }}</textarea>
+          <script>
+              CKEDITOR.replace( 'bio' );
+          </script>
         </div>
 
         <div class="form-group">
