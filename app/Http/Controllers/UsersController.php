@@ -6,6 +6,7 @@ use App\Tag;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -63,16 +64,20 @@ class UsersController extends Controller
     public function update(User $user)
     {
         $this->validate(request(), [
-        'name' => 'required|max:100',
-      ]);
+          'name' => 'required|max:100',
+        ]);
+
+        $ext = request()->file('avatar')->Extension();
+        request()->file('avatar')->storeAs('/public/avatars', $user->username . '.'. $ext);
 
         User::where('id', $user->id)
           ->update([
             'name' => request('name'),
             'bio' => request('bio'),
-            'location' => request('location')
+            'location' => request('location'),
+            'avatar' => '/storage/avatars'. '/'. $user->username . '.' . $ext
           ]);
 
-        return redirect('/blog/user'. '/' . $user->id);
+        return redirect('/blog/user'. '=' . $user->id);
     }
 }

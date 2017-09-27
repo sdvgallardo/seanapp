@@ -1,16 +1,21 @@
 <div class="col-sm-3 offset-sm-1 blog-sidebar">
 
-  <div class="sidebar-module">
-    @if ( Auth::check() )
-      @if ( Auth::user()->id == $user->id )
+  @if ( Auth::check() )
+    @if ( Auth::user()->id == $user->id )
+      <div class="sidebar-module">
         <a href = '/blog/edit/user={{ $user->id }}'><button type="edit" class="btn btn-primary">Edit Profile</button></a>
-      @endif
+        <br>
+      </div>
     @endif
-    <br>
-  </div>
+  @endif
+
 
   <div class="sidebar-module sidebar-module-inset">
     <h4><b>{{ $user->name }}</b></h4>
+    @if ($user->avatar)
+      <img src="{{ $user->avatar }}" style="width:150px;height:auto">
+    @endif
+    <hr>
     <ol class="list-unstyled">
       <li> <i>Joined:</i> {{ $user->created_at->toFormattedDateString() }} </li>
       <li> <i>Posts:</i> {{ $user->posts->count() }}</li>

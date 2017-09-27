@@ -32,7 +32,9 @@
           @endif
         </p>
 
-        {{str_limit($post->body, 50)}}
+        <?php
+          echo str_limit($post->body, 200);
+         ?>
         <i><a href="/blog/post={{ $post->id }}">Read More</a></i>
 
       </div>

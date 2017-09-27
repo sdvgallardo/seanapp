@@ -9,7 +9,7 @@
     <h1>Edit User</h1>
     <hr>
     @if ( Auth::user()->id == $user->id )
-      <form method="POST" action="/blog/edit/user/{{ $user->id }}" >
+      <form method="POST" action="/blog/edit/user={{ $user->id }}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -23,8 +23,14 @@
         </div>
 
         <div class="form-group">
-          <label for="title">Location</label>
+          <label for="location">Location</label>
           <input type="text" class="form-control" id="location" name="location" value="{{ $user->location }}">
+        </div>
+
+        <div class="form-group">
+          <label for="avatar">Upload an avatar</label>
+          <br>
+          <input type="file" name="avatar"></input>
         </div>
 
         <div class="form-group">

@@ -13,6 +13,7 @@
 use App\Task;
 use Controllers\TasksController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 //Basic routes
 Route::get('/', function () { return view('welcome'); });
@@ -48,6 +49,7 @@ Route::post('/tasks/edit/{task}', 'TasksController@update');
   Route::post('/blog/edit/user={user}', 'UsersController@update');
   Route::post('/blog', 'PostsController@store');                          // Stores a new post on the database
   Route::post('/blog/{post}/comments', 'CommentsController@store');       // Stores a new comment
+  Route::post('/blog/avatars', function() { } );
 
 Auth::routes();
 
