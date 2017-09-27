@@ -21,7 +21,7 @@
       <li> <i>Posts:</i> {{ $user->posts->count() }}</li>
       <li> <i>Location:</i> {{ $user->location }} </li>
       <hr>
-      <li> <i>Bio:</i><?php echo $user->bio; ?></li>
+      <li> <i>Bio:</i> {!! $user->bio !!} </li>
     </ol>
   </div>
 
