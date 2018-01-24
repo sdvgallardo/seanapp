@@ -71,7 +71,7 @@ class TasksController extends Controller
 
         Task::where('id', $task->id)
           ->update([
-          ' body' => request('body'),
+          'body' => request('body'),
           ]);
         //Redirect to homepage
         return redirect('/tasks');
