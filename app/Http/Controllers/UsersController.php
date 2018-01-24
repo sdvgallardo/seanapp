@@ -65,20 +65,20 @@ class UsersController extends Controller
     {
         $this->validate(request(), [
           'name' => 'required|max:100',
+          'avatar' => 'image|mimes:jpg,jpeg,png,gif,svg',
         ]);
         if(request()->file('avatar')){
-          $ext = request()->file('avatar')->Extension();
-          request()->file('avatar')->storeAs('/public/avatars', $user->username . '.'. $ext);
-          $path = '/storage/avatars' . '/' . $user->username . '.' . $ext;
+          $filename = $user->id . '_' . time() . '.' . request()->file('avatar')->Extension();
+          request()->file('avatar')->move(public_path('uploads/avatars'), $filename);
         }
-        else $path = $user->avatar;
+        else $filename = $user->avatar;
 
         User::where('id', $user->id)
           ->update([
             'name' => request('name'),
             'bio' => request('bio'),
             'location' => request('location'),
-            'avatar' => $path
+            'avatar' => $filename
           ]);
 
         return redirect('/blog/user'. '=' . $user->id);

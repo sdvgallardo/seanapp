@@ -19,7 +19,7 @@
       @else
       <ul class="navbar-nav ml-auto">
         @if (Auth::user()->avatar)
-          <img src="{{ Auth::user()->avatar }}" style="width:auto;height:40px">
+          <img src="{{ asset('uploads/avatars/' . Auth::user()->avatar) }}" style="width:auto;height:40px">
         @endif
         <li class="nav-item"><a class="nav-link" href="/blog/user={{ Auth::user()->id }}">{{ Auth::user()->name }}</a></li>
         <li class="nav-item">

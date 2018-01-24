@@ -13,7 +13,7 @@
   <div class="sidebar-module sidebar-module-inset">
     <h4><b>{{ $user->name }}</b></h4>
     @if ($user->avatar)
-      <img src="{{ $user->avatar }}" style="width:150px;height:auto">
+      <img src="{{ asset('uploads/avatars/' . $user->avatar) }}" style="width:150px;height:auto">
     @endif
     <hr>
     <ol class="list-unstyled">

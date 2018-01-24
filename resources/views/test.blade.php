@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en-US">
+<head>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>About!</title>
 
-<p>Click the button to open a new console</p>
-
-<button onclick="myFunction()">Open console</button>
-
-<script>
-function myFunction() {
-    window.open("/webconsole.php", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=400,height=400");
-}
-</script>
-
-</body>
+    <!-- Load Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+@include('layouts.nav')
+  <body>
+    <h1>
+      Testing area
+    </h1>
+  </body>
 </html>
