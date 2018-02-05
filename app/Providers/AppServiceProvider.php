@@ -17,6 +17,11 @@ class AppServiceProvider extends ServiceProvider
         //
         Schema::defaultStringLength(191);
 
+        // Force SSL in production
+        if ($this->app->environment() == 'production') {
+          URL::forceScheme('https');
+        }
+
         view()->composer('layouts.blog.sidebar', function ($view) {
             $archives = \App\Post::archives();
             $tags = \App\Tag::archives();
