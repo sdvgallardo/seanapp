@@ -1,5 +1,12 @@
 <?php
 
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+
 return [
 
     /*
@@ -40,12 +47,25 @@ return [
         ],
 
         'mysql' => [
+            // 'driver' => 'mysql',
+            // 'host' => env('DB_HOST', 'db4free.net'),
+            // 'port' => env('DB_PORT', '3306'),
+            // 'database' => env('DB_DATABASE', 'seanapp'),
+            // 'username' => env('DB_USERNAME', 'seanapp'),
+            // 'password' => env('DB_PASSWORD', 'deadmeat7'),
+            // 'unix_socket' => env('DB_SOCKET', ''),
+            // 'charset' => 'utf8mb4',
+            // 'collation' => 'utf8mb4_unicode_ci',
+            // 'prefix' => '',
+            // 'strict' => false,
+            // 'engine' => null,
+
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'db4free.net'),
+            'host' => env('DB_HOST', $host),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'seanapp'),
-            'username' => env('DB_USERNAME', 'seanapp'),
-            'password' => env('DB_PASSWORD', 'deadmeat7'),
+            'database' => env('DB_DATABASE', $database),
+            'username' => env('DB_USERNAME', $username),
+            'password' => env('DB_PASSWORD', $password),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
